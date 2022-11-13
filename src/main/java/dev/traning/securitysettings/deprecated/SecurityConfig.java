@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +15,6 @@ import javax.sql.DataSource;
 
 //@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
 
 
 //    @Autowired
@@ -33,23 +33,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin();
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("joe")
-//                .password("doe")
-//                .roles("USER")
-//                .and()
-//                .withUser("jack")
-//                .password("doe")
-//                .roles("ADMIN");
-//    }
+/*
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("joe")
+                .password("doe")
+                .roles("USER")
+                .and()
+                .withUser("jack")
+                .password("doe")
+                .roles("ADMIN");
+    }
+*/
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
 //                .dataSource(dataSource)
-                ;
+        ;
     }
 
 
@@ -58,5 +60,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
-
+/*
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+*/
 }

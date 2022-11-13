@@ -3,7 +3,6 @@ package dev.traning.securitysettings.securityconfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -44,30 +43,34 @@ public class SecurityConfig {
                         })
                         .formLogin(Customizer.withDefaults())
                         .build();
-//                httpSecurity
-//                        .csrf()
-//                        .disable()
-//                        .authorizeRequests()
-//                        .antMatchers("/").permitAll()
-//                        .antMatchers("/user").hasRole("USER")
-//                        .antMatchers("/ADMIN").hasRole("ADMIN")
-//                        .anyRequest().authenticated()
-//                        .and()
-//                        .httpBasic()
-//                        .and().build();
+/*
+                httpSecurity
+                        .csrf()
+                        .disable()
+                        .authorizeRequests()
+                        .antMatchers("/").permitAll()
+                        .antMatchers("/user").hasRole("USER")
+                        .antMatchers("/ADMIN").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                        .and()
+                        .httpBasic()
+                        .and().build();
+*/
     }
-    //         @Bean
-//    public InMemoryUserDetailsManager userDetailsManager() {
-//        UserDetails user = User.withDefaultPasswordEncoder()
-//                .username("joe")
-//                .password("doe")
-//                .roles("USER")
-//                .build();
-//        UserDetails admin = User.withDefaultPasswordEncoder()
-//                .username("jack")
-//                .password("doe")
-//                .roles("ADMIN")
-//                .build();
-//        return new InMemoryUserDetailsManager(user, admin);
-//    }
+
+/*         @Bean
+    public InMemoryUserDetailsManager userDetailsManager() {
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("joe")
+                .password("doe")
+                .roles("USER")
+                .build();
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("jack")
+                .password("doe")
+                .roles("ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin);
+    }
+*/
 }
